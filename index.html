@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Python Conditional Statements – Visual Learning</title>
+<style>
+:root{--bg:#f3f5ff;--card:#fff;--tx:#161a38;--mut:#566091;--ac:#5b3df5;--ac2:#00a6c8;--g:#10a860;--r:#e5392d;--bd:#d6dbf3;--code:#12163a;--cx:#e9ecff;--y:#ffb703;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0f26;--card:#161b3f;--tx:#eef0ff;--mut:#9aa3d6;--ac:#8f7cff;--ac2:#35d0f0;--g:#2ee59a;--r:#ff6b60;--bd:#2a3166;--code:#080b1e;--cx:#c9d0ff}}
+:root[data-theme="dark"]{--bg:#0c0f26;--card:#161b3f;--tx:#eef0ff;--mut:#9aa3d6;--ac:#8f7cff;--ac2:#35d0f0;--g:#2ee59a;--r:#ff6b60;--bd:#2a3166;--code:#080b1e;--cx:#c9d0ff}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.6 "Trebuchet MS",Verdana,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='220'><text x='20' y='130' transform='rotate(-25 180 110)' font-family='Arial' font-weight='bold' font-size='34' fill='%23888'>PAVAN POLAKA</text></svg>")}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:linear-gradient(120deg,var(--ac),var(--ac2));color:#fff;padding:10px 14px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h1{font-size:1.15rem;margin:0}
+#th{background:rgba(255,255,255,.22);border:0;color:#fff;border-radius:99px;padding:6px 14px;font-size:1rem;cursor:pointer}
+nav{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px}
+nav button{flex:none;border:0;border-radius:99px;padding:6px 14px;font:inherit;font-size:.9rem;cursor:pointer;background:rgba(255,255,255,.18);color:#fff}
+nav button.on{background:#fff;color:#3a22c8;font-weight:700}
+main{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:18px 14px 30px}
+h2{font-size:1.7rem;margin:.2em 0 .4em}h3{margin:.8em 0 .3em;font-size:1.1rem;color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:12px 0;animation:in .4s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+pre{background:var(--code);color:#e6e9ff;border-radius:12px;padding:12px 14px;margin:6px 0;overflow-x:auto;font:1rem/1.6 Consolas,monospace;white-space:pre}
+.k{color:#ff7ab6;font-weight:bold}.s{color:#8be28b}.n{color:#ffcf6b}.c{color:#7f89c4}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:760px){.g2{grid-template-columns:1fr}}
+button.b,.row button{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:9px 18px;font:inherit;cursor:pointer;margin:4px 6px 4px 0}
+button.b.alt{background:var(--mut)}
+input,select,textarea{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);max-width:100%}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0}
+.fl{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.88rem}
+.nd{padding:7px 12px;border:2px solid var(--bd);background:var(--card);border-radius:10px;text-align:center;font-weight:700;transition:.3s;word-break:break-word}
+.st{border-radius:99px}.dec{border-color:var(--ac)}
+.nd.on{background:var(--g);color:#fff;border-color:var(--g);box-shadow:0 0 16px var(--g);transform:scale(1.07)}
+.dec.on{background:var(--ac);border-color:var(--ac);box-shadow:0 0 16px var(--ac)}
+.lbl{font-size:.8rem;font-weight:700;padding:1px 10px;border-radius:99px;border:2px solid var(--bd);color:var(--mut);transition:.3s}
+.lbl.t.on{background:var(--g);color:#fff;border-color:var(--g)}.lbl.f.on{background:var(--r);color:#fff;border-color:var(--r)}
+.arr{width:3px;height:16px;background:repeating-linear-gradient(var(--mut) 0 4px,transparent 4px 8px);animation:mv .5s linear infinite}
+@keyframes mv{to{background-position:0 8px}}
+.br{display:flex;gap:8px;align-items:flex-start;width:100%}.bb{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:0}.bb.big{flex:2}
+.res{font-weight:700;padding:10px;border-radius:10px;background:var(--cx);color:#161a38;margin-top:8px}
+.ok{border-color:var(--g)!important;background:rgba(16,168,96,.18)!important}.bad{border-color:var(--r)!important;background:rgba(229,57,45,.18)!important}
+.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:8px 12px;border-radius:10px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+.why{margin-top:6px;color:var(--mut);font-size:.95rem}
+table{width:100%;border-collapse:collapse;font-size:.95rem}td,th{border:1px solid var(--bd);padding:8px;vertical-align:top;text-align:left}th{background:var(--cx);color:#161a38}
+.tbl{overflow-x:auto}.hx{background:rgba(255,183,3,.3);display:block;border-left:4px solid var(--y)}
+.hl{display:block}
+textarea.code{width:100%;height:230px;font:1rem/1.5 Consolas,monospace;background:var(--code);color:#e6e9ff;white-space:pre}
+.con{background:#000;color:#6dff9c;font:1rem Consolas,monospace;border-radius:10px;padding:10px;min-height:60px;white-space:pre-wrap}
+footer{position:relative;z-index:2;text-align:center;padding:18px 10px 26px;color:var(--mut);font-size:.9rem;border-top:1px solid var(--bd)}
+.aur{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}.aur i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(90px);opacity:.28;animation:dr 22s ease-in-out infinite alternate}.aur i:nth-child(1){background:var(--ac);left:-15vmax;top:-10vmax}.aur i:nth-child(2){background:var(--ac2);right:-20vmax;top:25vh;animation-delay:-8s}.aur i:nth-child(3){background:var(--y);left:20vw;bottom:-30vmax;opacity:.16;animation-delay:-14s}@keyframes dr{to{transform:translate(8vmax,6vmax) scale(1.2) rotate(40deg)}}
+#fx{position:fixed;inset:0;z-index:1;pointer-events:none}
+.wm{position:fixed;inset:0;z-index:3;pointer-events:none;display:grid;place-items:center;overflow:hidden}.wm span{position:relative;font:900 clamp(44px,13vw,160px)/1 Impact,"Arial Black",sans-serif;letter-spacing:.06em;white-space:nowrap;transform:rotate(-20deg);color:color-mix(in srgb,var(--mut) 13%,transparent)}.wm span::after{content:attr(data-t);position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,var(--ac) 43%,var(--ac2) 50%,var(--y) 57%,transparent 65%) 100% 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.4;animation:sh 6s ease-in-out infinite}@keyframes sh{to{background-position:0 0}}
+#dot{position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,#fff,var(--y) 55%,transparent 70%);box-shadow:0 0 22px 8px var(--y);transition:transform .45s cubic-bezier(.5,0,.2,1);z-index:5;pointer-events:none}
+.fl{position:relative}.card{animation:in .5s both;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(91,61,245,.25)}
+@keyframes pop{0%{transform:scale(.8)}60%{transform:scale(1.15)}}.nd.on{animation:pop .5s}
+h2{background:linear-gradient(90deg,var(--ac),var(--ac2),var(--y),var(--ac));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gs 6s linear infinite}@keyframes gs{to{background-position:300% 0}}
+.res.ok{box-shadow:0 0 18px var(--g)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<header><div class="top"><h1>🐍 Python Conditional Statements – Visual Learning</h1><button id="th">🌓 Theme</button></div><nav id="nav"></nav></header>
+<div class="aur"><i></i><i></i><i></i></div><canvas id="fx"></canvas><div class="wm"><span data-t="PAVAN POLAKA">PAVAN POLAKA</span></div><main id="m"></main>
+<footer>Prepared by Pavan<br>Technical Trainer<br>© 2026 Pavan Polaka. All Rights Reserved.</footer>
+<script>
+const $=s=>document.querySelector(s);
+const hl=c=>c.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/(#.*)|("[^"]*")|\b(if|elif|else|and|or|not|True|False|print)\b|\b(\d+)\b/g,(m,a,b,c2,d)=>a?`<span class=c>${m}</span>`:b?`<span class=s>${m}</span>`:c2?`<span class=k>${m}</span>`:`<span class=n>${m}</span>`);
+const pre=c=>`<pre>${hl(c)}</pre>`;
+// theme
+let dark=matchMedia("(prefers-color-scheme:dark)").matches;
+function setT(){document.documentElement.dataset.theme=dark?"dark":"light"}setT();
+$("#th").onclick=()=>{dark=!dark;setT()};
+// sections data
+const S={
+intro:{n:"Start Here",h:"What are Conditional Statements?",say:["Imagine your teacher says: <b>“If it rains, take an umbrella.”</b> You first <b>check</b> something (is it raining?). Then you <b>decide</b> what to do. Python does exactly the same, using the word <b>if</b>.","<b>Why do we need them?</b> Without decisions, a program does the same thing every time. With decisions, it can say “Pass” or “Fail”, allow or block a login, give cash or refuse.","<b>How does Python decide?</b> It asks a question that has only two answers: <b>True</b> or <b>False</b>. True means “do this”. False means “skip this” or “do something else”. Press the button below and watch it happen."],vars:[["raining","b",true,"Is it raining?"]],tree:{q:"raining == True",f:v=>v.raining,y:"Take an umbrella 🌂",n:"Walk without umbrella 😎"},cards:1},
+if:{n:"if",h:"The if Statement",say:["Think of a classroom rule: <b>if</b> the bell rings, we go home. Python checks <b>one</b> question. If the answer is <b>True</b>, it runs the work. If <b>False</b>, it skips the work and moves on.","The line after <b>if</b> is pushed to the right. This space is called <b>indentation</b>. It tells Python: “this line belongs to the if”."],syn:"if condition:\n    statement",ex:'age = 20\n\nif age >= 18:\n    print("Eligible to vote")',lines:["<b>age = 20</b> – store the number 20 in a box named age.","<b>if age >= 18:</b> – ask: is age greater than or equal to 18? The colon <b>:</b> is compulsory.","<b>print(...)</b> – indented, so it runs only when the answer is True."],vars:[["age","n",20,"age"]],tree:{q:"age >= 18",f:v=>v.age>=18,y:'print("Eligible to vote")',n:"Nothing happens"}},
+ifelse:{n:"if-else",h:"The if-else Statement",say:["With plain <b>if</b>, nothing happens when the answer is False. We use <b>else</b> as the “otherwise” plan: <b>if</b> the condition is True do this, <b>else</b> do that.","Exactly <b>one</b> of the two blocks always runs. Never both, never none."],syn:"if condition:\n    statement\nelse:\n    statement",ex:'number = 10\n\nif number > 0:\n    print("Positive Number")\nelse:\n    print("Not a Positive Number")',lines:["<b>else:</b> has no condition. It needs a colon and its own indented line.","Line up <b>else</b> exactly under its <b>if</b>."],vars:[["number","n",10,"number"]],tree:{q:"number > 0",f:v=>v.number>0,y:'print("Positive Number")',n:'print("Not a Positive Number")'}},
+elif:{n:"if-elif-else",h:"The if-elif-else Statement",say:["Sometimes there are <b>more than two</b> choices, like grades. <b>elif</b> means “else, if this is true”. Python checks <b>from top to bottom</b>.","The moment one condition is True, Python runs that block and <b>ignores everything below</b>. Only the first match runs."],syn:"if condition1:\n    statement1\nelif condition2:\n    statement2\nelif condition3:\n    statement3\nelse:\n    default_statement",ex:'marks = 75\n\nif marks >= 90:\n    print("Grade A")\nelif marks >= 75:\n    print("Grade B")\nelif marks >= 50:\n    print("Grade C")\nelse:\n    print("Fail")',lines:["Try marks = 95. It matches the first check, so the others are never even looked at.","Order matters! Put the biggest check first."],vars:[["marks","n",75,"marks"]],tree:{q:"marks >= 90",f:v=>v.marks>=90,y:'print("Grade A")',n:{q:"marks >= 75",f:v=>v.marks>=75,y:'print("Grade B")',n:{q:"marks >= 50",f:v=>v.marks>=50,y:'print("Grade C")',n:'print("Fail")'}}}},
+nested:{n:"Nested if",h:"The Nested if Statement",say:["<b>Nested</b> means one thing inside another, like a small box inside a big box. A nested if is an <b>if inside an if</b>.","Real example: to enter a club, you must first be 18 or above. <b>Only then</b> the guard checks your ID."],syn:"if condition1:\n    if condition2:\n        statement\n    else:\n        statement\nelse:\n    statement",ex:'age = 20\nhas_id = True\n\nif age >= 18:\n    if has_id:\n        print("Entry Allowed")\n    else:\n        print("ID Required")\nelse:\n    print("Not Eligible")',lines:["Each level moves <b>4 spaces</b> to the right. Inner lines belong to the nearest if above them.","Execution order: outer check first. The inner check runs only if the outer one is True."],vars:[["age","n",20,"age"],["has_id","b",true,"has_id"]],tree:{q:"age >= 18",f:v=>v.age>=18,y:{q:"has_id",f:v=>v.has_id,y:'"Entry Allowed"',n:'"ID Required"'},n:'"Not Eligible"'}}};
+let cnt=0;
+function rtree(t,id){if(typeof t=="string")return`<div class="nd" id="${id}">${t.replace(/</g,"&lt;")}</div>`;
+const c=(x,b)=>`<div class="bb ${typeof x=="string"?"":"big"}"><div class="lbl ${b=="y"?"t":"f"}" id="${id+b}">${b=="y"?"TRUE":"FALSE"}</div><div class="arr"></div>${rtree(x,id+b+"c")}</div>`;
+return`<div class="nd dec" id="${id}">◆ ${t.q}</div><div class="br">${c(t.y,"y")}${c(t.n,"n")}</div>`}
+function walk(t,v,id,p){if(typeof t=="string"){p.push(id);return t}p.push(id);const r=t.f(v),b=r?"y":"n";p.push(id+b);return walk(r?t.y:t.n,v,id+b+"c",p)}
+function flow(k){const s=S[k];return`<div class="fl" id="fl"><div class="nd st" id="start">START</div><div class="arr"></div>${rtree(s.tree,"r")}<div class="arr"></div><div class="nd st" id="end">END</div></div>`}
+function inputs(k){return S[k].vars.map(([n,t,d,l])=>t=="n"?`<label>${l} = <input id="v_${n}" type="number" value="${d}" style="width:100px"></label>`:`<label>${l} = <select id="v_${n}"><option value="true"${d?" selected":""}>True</option><option value="false"${d?"":" selected"}>False</option></select></label>`).join("")}
+function play(k){const s=S[k],v={};s.vars.forEach(([n,t])=>{const e=$("#v_"+n);v[n]=t=="n"?Number(e.value):e.value=="true"});
+document.querySelectorAll("#fl .on").forEach(e=>e.classList.remove("on"));const p=["start"];const out=walk(s.tree,v,"r",p);p.push("end");
+const fl=$("#fl");let dt=$("#dot");if(!dt){dt=document.createElement("div");dt.id="dot";fl.appendChild(dt)}p.forEach((id,i)=>setTimeout(()=>{const e=$("#"+id);if(!e)return;e.classList.add("on");const a=e.getBoundingClientRect(),b=fl.getBoundingClientRect();dt.style.transform=`translate(${a.left-b.left+a.width/2}px,${a.top-b.top+a.height/2}px)`},i*450));
+setTimeout(()=>{$("#res").innerHTML="✅ Python follows the highlighted path and gives: <b>"+out.replace(/</g,"&lt;")+"</b>";boom()},p.length*450)}
+function sec(k){const s=S[k];let h=`<h2>${s.h}</h2><div class=card>${s.say.map(x=>`<p>${x}</p>`).join("")}</div>`;
+if(s.syn)h+=`<div class="g2"><div class=card><h3>Syntax</h3>${pre(s.syn)}<h3>Example</h3>${pre(s.ex)}</div><div class=card><h3>Line by line</h3>${s.lines.map(x=>`<p>👉 ${x}</p>`).join("")}</div></div>`;
+h+=`<div class=card><h3>Watch the decision</h3><div class=row>${inputs(k)}<button class=b onclick="play('${k}')">▶ Run the flowchart</button></div>${flow(k)}<div class=res id=res>Change the value, press Run, and watch the path light up.</div></div>`;
+if(s.cards)h+=`<h3>Real-life decisions (tap to flip the answer)</h3><div class=g2>${[["☔ If it rains, take an umbrella","It is raining","Take an umbrella 🌂","No umbrella needed 😎"],["📝 If marks ≥ 35, pass; otherwise fail","Marks = 60","Pass ✅","Fail ❌"],["🗳️ If age ≥ 18, eligible to vote","Age = 20","Eligible to vote ✅","Not eligible yet ⏳"]].map((c,i)=>`<div class=card><b>${c[0]}</b><br><button class="b alt" onclick="fl2(this,${i})">Condition: ${c[1]} → TRUE</button><div class=res>${c[2]}</div></div>`).join("")}</div>`;
+return h}
+const C3=[["It is raining","Marks = 60","Age = 20"],["It is not raining","Marks = 20","Age = 15"]];
+function fl2(b,i){const t=b.dataset.f!="1";b.dataset.f=t?"1":"";const d=[["Take an umbrella 🌂","No umbrella needed 😎"],["Pass ✅","Fail ❌"],["Eligible to vote ✅","Not eligible yet ⏳"]][i];b.textContent="Condition: "+C3[t?1:0][i]+(t?" → FALSE":" → TRUE");b.nextElementSibling.textContent=d[t?1:0]}
+// compare
+function cmp(){const r=[["if","1","Do something only when a condition is True. Otherwise skip.","Check → True: run → End. False: End","If it rains, take an umbrella."],["if-else","1 (two outcomes)","Exactly two choices. One always runs.","Check → True block, or False block","Pass or fail."],["if-elif-else","2 or more","Many choices; first match wins.","Check top to bottom, stop at first True","Grade A, B, C or Fail."],["nested if","2 or more (one inside another)","A second question only matters after the first is True.","Outer check → inner check","Age 18+ first, then ID check."]];
+return`<h2>Side-by-Side Comparison</h2><div class="card tbl"><table><tr><th>Type</th><th>Conditions</th><th>When to use</th><th>Execution flow</th><th>Real-world example</th></tr>${r.map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td></tr>`).join("")}</table></div>`}
+// mini python simulator (JavaScript based)
+function py(src){const L=[];src.split("\n").forEach((l,i)=>{const t=l.trim();if(t&&t[0]!="#")L.push({i:l.match(/^ */)[0].length,t,n:i})});
+const V={},out=[],st=[],hit=[];
+const ex=e=>{const parts=e.split(/("[^"]*"|'[^']*')/);if(parts.some((x,j)=>j%2==0&&(!/^[\w\s<>=!&|+\-*\/%().,]*$/.test(x)||/\.(?!\d)|\/\//.test(x))))throw Error("This simulator can’t understand: "+e);
+const j=parts.map((x,i)=>i%2?x:x.replace(/\bTrue\b/g,"true").replace(/\bFalse\b/g,"false").replace(/\band\b/g,"&&").replace(/\bor\b/g,"||").replace(/\bnot\b/g,"!")).join("");
+return Function(...Object.keys(V),'"use strict";return('+j+")")(...Object.values(V))};
+const fm=x=>x===true?"True":x===false?"False":x;
+function run(a,b){let i=a;while(i<b){const l=L[i];
+if(/^if\s/.test(l.t)){const br=[];let j=i;while(j<b&&L[j].i===l.i&&(j==i||/^(elif\s|else\s*:)/.test(L[j].t))){let k=j+1;while(k<b&&L[k].i>l.i)k++;br.push([j,k]);j=k}
+for(const[s,e]of br){const t=L[s].t;if(/^else/.test(t)){st.push("Line "+(L[s].n+1)+": else → no earlier condition was True, so this block runs");hit.push(L[s].n);run(s+1,e);break}
+const c=t.replace(/^(if|elif)\s+/,"").replace(/:$/,"");if(/(^|[^=!<>])=(?!=)/.test(c))throw Error("Line "+(L[s].n+1)+": use == to compare, a single = stores a value");
+const r=ex(c);st.push("Line "+(L[s].n+1)+": "+t+" → "+fm(r)+(r?" ✔ run this block, skip the rest":" ✘ skip this block"));if(r){hit.push(L[s].n);run(s+1,e);break}}i=j}
+else if(/^print\(.*\)$/.test(l.t)){out.push(ex("["+l.t.slice(6,-1)+"]").map(fm).join(" "));st.push("Line "+(l.n+1)+": print → shows output");i++}
+else{const m=l.t.match(/^(\w+)\s*=\s*(.+)$/);if(!m||/^(\w+)\s*==/.test(l.t))throw Error("Line "+(l.n+1)+": can’t understand “"+l.t+"”");V[m[1]]=ex(m[2]);st.push("Line "+(l.n+1)+": "+m[1]+" now stores "+fm(V[m[1]]));i++}}}
+run(0,L.length);return{out,st,hit}}
+const PG='age = 20\nhas_id = True\n\nif age >= 18:\n    if has_id:\n        print("Entry Allowed")\n    else:\n        print("ID Required")\nelse:\n    print("Not Eligible")';
+function play2(){return`<h2>Code Playground</h2><div class=card><p>Edit the code, then press Run. This is a <b>JavaScript simulation</b> of simple Python (variables, print, if/elif/else, comparisons, and/or/not). It is <b>not real Python</b>, and input() is not supported.</p><textarea class=code id=pg spellcheck=false>${PG}</textarea><div><button class=b onclick=runPg()>▶ Run</button><button class="b alt" onclick="$('#pg').value=PG;$('#po').textContent='';$('#ps').innerHTML='';$('#pc').innerHTML=''">↺ Reset</button></div><h3>Output console</h3><div class=con id=po>Press Run to see the output.</div><h3>Executed conditions</h3><div id=pc></div><h3>Step-by-step</h3><div id=ps></div></div>`}
+function runPg(){const src=$("#pg").value;try{const r=py(src);$("#po").textContent=r.out.join("\n")||"(no output)";$("#ps").innerHTML=r.st.map(x=>`<p>• ${x.replace(/</g,"&lt;")}</p>`).join("");
+$("#pc").innerHTML="<pre>"+src.split("\n").map((l,i)=>`<span class="${r.hit.includes(i)?"hx":"hl"}">${hl(l)||" "}</span>`).join("")+"</pre>"}catch(e){$("#po").textContent="⚠ "+e.message;$("#ps").innerHTML="";$("#pc").innerHTML=""}}
+// simulators
+const SIM=[
+{t:"🗳️ Voting Eligibility",in:[["age","Age","number",17]],code:['if age >= 18:','    print("Eligible to vote")','else:','    print("Not eligible yet")'],f:v=>v.age>=18?["Eligible to vote ✅",[0,1],1]:["Not eligible yet ❌",[2,3],0]},
+{t:"📝 Marks and Grade",in:[["marks","Marks","number",82]],code:['if marks >= 90:','    print("Grade A")','elif marks >= 75:','    print("Grade B")','elif marks >= 50:','    print("Grade C")','else:','    print("Fail")'],f:v=>v.marks>=90?["Grade A 🌟",[0,1],1]:v.marks>=75?["Grade B 👍",[2,3],1]:v.marks>=50?["Grade C 🙂",[4,5],1]:["Fail 📚",[6,7],0]},
+{t:"🏧 ATM Withdrawal",in:[["balance","Balance","number",5000],["amount","Amount","number",2000]],code:['if amount <= 0:','    print("Enter a valid amount")','elif amount <= balance:','    print("Take your cash")','else:','    print("Insufficient balance")'],f:v=>v.amount<=0?["Enter a valid amount ⚠️",[0,1],0]:v.amount<=v.balance?["Take your cash 💵 (new balance "+(v.balance-v.amount)+")",[2,3],1]:["Insufficient balance ❌",[4,5],0]},
+{t:"🔐 Login System",in:[["user","Username","text","admin"],["pw","Password","text","1234"]],code:['if username == "admin":','    if password == "1234":','        print("Login successful")','    else:','        print("Wrong password")','else:','    print("User not found")'],f:v=>v.user=="admin"?v.pw=="1234"?["Login successful ✅",[0,1,2],1]:["Wrong password ❌",[0,1,3,4],0]:["User not found ❌",[5,6],0]}];
+function sims(){return`<h2>Condition Simulator</h2><p>Type values, press the button, and see which lines of code ran (highlighted in yellow).</p><div class=g2>${SIM.map((s,i)=>`<div class=card><h3>${s.t}</h3><div class=row>${s.in.map(a=>`<label>${a[1]} <input id="s${i}${a[0]}" type="${a[2]}" value="${a[3]}" style="width:120px"></label>`).join("")}</div><button class=b onclick=sim(${i})>Check</button><div id=sc${i}>${pre(s.code.join("\n"))}</div><div class=res id=sr${i}>Press Check.</div></div>`).join("")}</div>`}
+function sim(i){const s=SIM[i],v={};s.in.forEach(a=>{const e=$("#s"+i+a[0]);v[a[0]]=a[2]=="number"?Number(e.value):e.value});const[o,h,g]=s.f(v);
+$("#sc"+i).innerHTML="<pre>"+s.code.map((l,j)=>`<span class="${h.includes(j)?"hx":"hl"}">${hl(l)}</span>`).join("")+"</pre>";const r=$("#sr"+i);r.textContent=o;r.className="res "+(g?"ok":"bad");if(g)boom()}
+// practice
+const Q=[["Beginner",["Which keyword starts a decision in Python?","",["if","when","check"],0,"Every decision starts with the word if."]],
+["Beginner",["What must come at the end of an if line?","",[": (colon)","; (semicolon)",". (dot)"],0,"The colon tells Python that a block of code follows."]],
+["Beginner",["The condition is False and there is no else. What happens?","",["The block is skipped","An error appears","The program stops"],0,"Python simply skips the block and carries on."]],
+["Beginner",["How does Python know which lines are inside the if?","",["Indentation (spaces)","Capital letters","Curly brackets { }"],0,"Lines pushed to the right belong to the if."]],
+["Intermediate",["What is printed?","marks = 75\nif marks >= 90:\n    print(\"A\")\nelif marks >= 75:\n    print(\"B\")\nelse:\n    print(\"C\")",["A","B","C"],1,"75 is not ≥ 90, but it is ≥ 75, so B runs."]],
+["Intermediate",["In an if-elif-else chain, how many blocks run?","",["Only the first matching one","All matching ones","All of them"],0,"Python stops at the first True condition."]],
+["Intermediate",["What is printed?","age = 17\nhas_id = True\nif age >= 18:\n    if has_id:\n        print(\"Entry Allowed\")\n    else:\n        print(\"ID Required\")\nelse:\n    print(\"Not Eligible\")",["Entry Allowed","ID Required","Not Eligible"],2,"The outer check fails (17 is not ≥ 18), so the inner check never runs."]],
+["Intermediate",["Value of the condition?","x = 5\nx > 3 and x < 5",["True","False","Error"],1,"x < 5 is False, and “and” needs both parts True."]],
+["Output prediction",["What is printed?","n = 0\nif n > 0:\n    print(\"Pos\")\nelif n < 0:\n    print(\"Neg\")\nelse:\n    print(\"Zero\")",["Pos","Neg","Zero"],2,"0 is neither above nor below 0, so else runs."]],
+["Output prediction",["What is printed?","x = 10\nif x > 5:\n    print(\"A\")\nif x > 8:\n    print(\"B\")",["A only","B only","A then B"],2,"These are two separate ifs, so both are checked and both run."]],
+["Find the error",["What is wrong?","if age >= 18\n    print(\"Adult\")",["Missing colon after the condition","print is wrong","Nothing is wrong"],0,"Every if line must end with a colon."]],
+["Find the error",["What is wrong?","if x = 5:\n    print(\"Five\")",["Should be == to compare","Should be elif","Nothing is wrong"],0,"= stores a value. == compares two values."]]];
+const CH=[["Coding challenge 1","Print Even if num is even, otherwise Odd.","num = 7\n# write your if-else below\n","Odd"],["Coding challenge 2","Print Hot if temp is above 30, otherwise Cool.","temp = 35\n# write your if-else below\n","Hot"]];
+let sc=0,done=0;
+function prac(){sc=0;done=0;let last="";return`<h2>Practice and Knowledge Check</h2><div class=res id=score>Score: 0 / ${Q.length}</div>`+Q.map((q,i)=>{let h="";if(q[0]!=last){h=`<h3>${q[0]}</h3>`;last=q[0]}const d=q[1];return h+`<div class=card id="q${i}"><b>${d[0]}</b>${d[1]?pre(d[1]):""}${d[2].map((o,j)=>`<button class=opt onclick="ans(${i},${j})">${o}</button>`).join("")}<div class=why></div></div>`}).join("")+`<h3>Coding challenges</h3>`+CH.map((c,i)=>`<div class=card><b>${c[0]}</b><p>${c[1]}</p><textarea class=code style="height:110px" id="ch${i}" spellcheck=false>${c[2]}</textarea><br><button class=b onclick=chk(${i})>Check my code</button><div class=res id="cr${i}">Write the code and press Check.</div></div>`).join("")}
+function ans(i,j){const d=Q[i][1],c=$("#q"+i);if(c.dataset.d)return;c.dataset.d=1;const bs=c.querySelectorAll(".opt");bs[j].classList.add(j==d[3]?"ok":"bad");bs[d[3]].classList.add("ok");c.querySelector(".why").textContent=(j==d[3]?"✅ Correct! ":"❌ Not quite. ")+d[4];if(j==d[3]){sc++;boom()}$("#score").textContent=`Score: ${sc} / ${Q.length}`}
+function chk(i){const r=$("#cr"+i);try{const o=py($("#ch"+i).value).out.join("\n").trim();const ok=o==CH[i][3];r.textContent=ok?"✅ Correct! Output: "+o:"❌ Your output was “"+o+"”. Expected “"+CH[i][3]+"”.";r.className="res "+(ok?"ok":"bad")}catch(e){r.textContent="⚠ "+e.message;r.className="res bad"}}
+// cinematic effects
+const cv=$("#fx"),cx=cv.getContext("2d");let W,H,pt=[],cf=[];
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener("resize",rs);
+const SY=["if","elif","else",":","True","False",">=","==","and","or","print()"];
+for(let i=0;i<26;i++)pt.push({x:Math.random()*W,y:Math.random()*H,s:Math.random()*.5+.2,t:SY[i%SY.length],z:12+Math.random()*16,a:Math.random()*6});
+function boom(){const x=innerWidth/2,y=innerHeight*.45;for(let i=0;i<90;i++){const a=Math.random()*6.28,v=3+Math.random()*7;cf.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-4,c:["#ffb703","#5b3df5","#00a6c8","#10a860","#ff4d8d"][i%5],l:1,r:3+Math.random()*4})}}
+function fr(){cx.clearRect(0,0,W,H);
+pt.forEach(p=>{p.y-=p.s;p.a+=.01;if(p.y<-30){p.y=H+20;p.x=Math.random()*W}cx.globalAlpha=.14+.1*Math.sin(p.a);cx.fillStyle=dark?"#9aa3ff":"#5b3df5";cx.font=`bold ${p.z}px Consolas,monospace`;cx.fillText(p.t,p.x+Math.sin(p.a)*14,p.y)});
+cf=cf.filter(c=>c.l>0);cf.forEach(c=>{c.x+=c.vx;c.y+=c.vy;c.vy+=.22;c.vx*=.99;c.l-=.012;cx.globalAlpha=Math.max(c.l,0);cx.fillStyle=c.c;cx.fillRect(c.x,c.y,c.r,c.r*1.6)});
+requestAnimationFrame(fr)}
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)fr();
+// nav
+const P=[["intro",S.intro.n],["if","if"],["ifelse","if-else"],["elif","if-elif-else"],["nested","Nested if"],["cmp","Compare"],["pg","Playground"],["sim","Simulator"],["prac","Practice"]];
+function go(k){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));$("#m").innerHTML=S[k]?sec(k):k=="cmp"?cmp():k=="pg"?play2():k=="sim"?sims():prac();document.querySelectorAll("#m .card").forEach((c,i)=>c.style.animationDelay=Math.min(i,8)*70+"ms");scrollTo(0,0)}
+$("#nav").innerHTML=P.map(p=>`<button data-k="${p[0]}" onclick="go('${p[0]}')">${p[1]}</button>`).join("");go("intro");
+</script></body></html>
